@@ -21,6 +21,9 @@
         @method('DELETE') {{-- ← これが「削除」であることをLaravelに伝える魔法の言葉 --}}
         <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
     </form>
+
+      <a href="{{ route('todos.edit', $todo) }}">編集</a>
+
   </li>
 
         @endforeach
