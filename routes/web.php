@@ -18,3 +18,5 @@ Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 // ログアウト処理
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Todoを削除するルート
+Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');

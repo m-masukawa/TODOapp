@@ -51,4 +51,16 @@ class TodoController extends Controller
 
         return redirect()->route('todos.index');
     }
+
+    public function destroy(Todo $todo)
+    {
+    // 自分のTodo以外は削除不能
+    if ($todo->user_id !== Auth::id()) {
+        abort(403);
+    }
+
+    $todo->delete(); // 削除
+
+    return redirect()->route('todos.index');
+    }
 }
