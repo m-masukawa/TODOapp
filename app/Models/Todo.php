@@ -9,11 +9,11 @@ class Todo extends Model
 {
     use HasFactory;
 
-    // ここを追記：保存していいカラムをホワイトリスト形式で指定します
+    // ここを追記：保存していいカラムをホワイトリスト形式で指定
     protected $fillable = [
         'user_id',
         'title',
         'description',
-        'completed', // マイグレーションで決めた名前（is_doneなど）に合わせてください
+        'completed', // マイグレーションで決めた名
     ];
 }
