@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <title>Todo一覧</title>
-</head>
-<body>
+@extends('layouts.app') {{--「親」 --}}
 
-<h1>Todo一覧</h1>
+@section('content') {{-- 中身 --}}
 
-<form action="/todos" method="POST">
-  @csrf
-  <input type="text" name="title" placeholder="タイトル">
-  <textarea name="body"></textarea>
-  <button type="submit">追加</button>
-</form>
+    <h1>Todo一覧</h1>
 
-<ul>
-@foreach ($todos as $todo)
-  <li>{{ $todo->title }}</li>
-@endforeach
-</ul>
+    <form action="{{ route('todos.store') }}" method="POST">
+        @csrf
+        <input type="text" name="title" placeholder="タイトル" required>
+        <button type="submit">追加</button>
+    </form>
 
-</body>
-</html>
+    <ul>
+        @foreach ($todos as $todo)
+            <li>{{ $todo->title }}</li>
+        @endforeach
+    </ul>
+
+@endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Services\TodoService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests; // トレイトをインポート
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -20,7 +21,7 @@ class TodoController extends Controller
 
     public function index()
     {
-        $todos = Todo::latest()->get();
+        $todos = Auth::user()->todos; 
         return view('todos.index', compact('todos'));
     }
 
