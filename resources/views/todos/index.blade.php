@@ -15,7 +15,7 @@
         <ul class="space-y-4">
             {{-- データベースから取得したTodoコレクションを繰り返し表示 --}}
             @foreach ($todos as $todo)
-            <li class="border-l-8 border-lcars-blue bg-gray-900 p-4 mb-4">
+            <li class="border-l-8 border-lcars-blue bg-gray-900 p-4 mb-4"> 
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xl font-bold text-lcars-blue">{{ $todo->title }}</span>
                     <div class="flex gap-4">

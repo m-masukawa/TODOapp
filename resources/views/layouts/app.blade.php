@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App</title>
-    {{-- 公開ディレクトリ内の外部スタイルシートを読み込み --}}
+    {{-- 外部スタイルシートを読み込み --}}
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-lcars-bg text-white p-6">
