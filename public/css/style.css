@@ -1,0 +1,70 @@
+/* --- 全体の基本設定 --- */
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-transform: uppercase; /* スタートレックっぽく大文字に */
+}
+
+/* --- ナビゲーション（LCARSのバー） --- */
+nav {
+    display: flex;
+    gap: 15px;
+    background-color: #99ccff; /* LCARSブルー */
+    padding: 15px 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+nav a, nav span, nav button {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+/* --- 入力フォーム（視認性確保！） --- */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    background-color: #000000;
+    border: 2px solid #ff9900; /* オレンジ枠 */
+    color: #ff9900;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* --- ボタン --- */
+button[type="submit"].btn-add {
+    background-color: #ff9900;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- リスト --- */
+ul { list-style: none; padding: 0; }
+li {
+    background-color: #1a1a1a;
+    border-left: 10px solid #99ccff;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-orange { color: #ff9900; }
+.text-yellow { color: #ffcc00; }
+.text-red { color: #cc0000; }

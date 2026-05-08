@@ -21,6 +21,10 @@ class TodoController extends Controller
 
     public function index()
     {
+        // ログインしてない人を、ログイン画面に力ずくで飛ばす
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
         $todos = Auth::user()->todos; 
         return view('todos.index', compact('todos'));
     }

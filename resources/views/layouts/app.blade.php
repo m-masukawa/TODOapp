@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Todoアプリ</title>
-    <style>
-        body { font-family: sans-serif; margin: 20px; }
-        nav { background: #eee; padding: 10px; margin-bottom: 20px; display: flex; gap: 10px; }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <nav>
-        @auth
-            <span>こんにちは、{{ Auth::user()->name }} さん</span>
-            <a href="{{ route('todos.index') }}">Todo一覧</a>
-            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-                @csrf
-                <button type="submit">ログアウト</button>
-            </form>
-        @else
-            <a href="{{ route('login') }}">ログイン</a>
-            <a href="{{ route('register') }}">新規登録</a>
-        @endauth
-    </nav>
-
-    <div class="container">
-        @yield('content')
-    </div>
+<body class="bg-lcars-bg text-white p-6">
+    <nav class="flex gap-4 mb-8 bg-lcars-blue p-4 text-black font-bold rounded-full">
+    @auth
+        <span>LOGIN [{{ Auth::user()->name }}]</span>
+        <a href="{{ route('todos.index') }}" class="hover:text-white">INDEX</a>
+        <form action="{{ route('logout') }}" method="POST" class="inline">
+            @csrf
+            <button type="submit" class="hover:text-white">LOGOUT</button>
+        </form>
+    @else
+        {{-- ログインしていない時はこっちを表示 --}}
+        <span>GUEST // ACCESS DENIED</span>
+        <a href="{{ route('login') }}" class="hover:text-white">LOGIN</a>
+        <a href="{{ route('register') }}" class="hover:text-white">REGISTER</a>
+    @endauth
+</nav>
+    
+    @yield('content')
 </body>
 </html>
