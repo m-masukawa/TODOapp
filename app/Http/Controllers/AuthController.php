@@ -24,24 +24,24 @@ class AuthController extends Controller
      */
     public function register(Request $request): RedirectResponse
     {
-        // 1. バリデーション（入力チェック）
+        // バリデーション
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        // 2. ユーザー作成
+        // ユーザー作成
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password), // パスワードを暗号化
         ]);
 
-        // 3. ログインさせる
+        //  ログイン
         Auth::login($user);
 
-        // 4. Todo一覧へ移動
+        // Todo一覧へ移動
         return redirect()->route('todos.index');
     }
 

@@ -16,6 +16,7 @@ class TodoApiController extends Controller
 
     public function store(Request $request)
     {
+        //データを受け取ってバリデーション
     $request->validate([
         'title' => 'required|max:255',
     ]);
