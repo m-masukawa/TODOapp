@@ -20,3 +20,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.store');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Todoを削除するルート
 Route::delete('/todos/{todo}', [TodoController::class, 'destroy'])->name('todos.destroy');
+// 編集画面を表示
+Route::get('/todos/{todo}/edit', [TodoController::class, 'edit'])->name('todos.edit');
+// 更新を実行
+Route::put('/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
