@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Todoアプリ</title>
+    <title>Todo App</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="bg-lcars-bg text-white p-6">
@@ -18,7 +18,7 @@
         {{-- ログインしていない時はこっちを表示 --}}
         <span>GUEST // ACCESS DENIED</span>
         <a href="{{ route('login') }}" class="hover:text-white">LOGIN</a>
-        <a href="{{ route('register') }}" class="hover:text-white">REGISTER</a>
+        <a href="{{ route('register') }}" class="hover:text-white">Sign Up</a>
     @endauth
 </nav>
     

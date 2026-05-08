@@ -27,18 +27,20 @@ class TodoController extends Controller
     }
         $todos = Auth::user()->todos; 
         return view('todos.index', compact('todos'));
+        // dd($todos->toArray());
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|max:255',
+            'body' => 'nullable',
         ]);
 
         // 【重要】ログインユーザーのIDも一緒にServiceに渡す
         $this->todoService->create([
             'title'   => $request->input('title'),
-            'body'    => $request->input('body'),
+            'body' => $request->body,
             'user_id' => Auth::id(), // ここを追加！
             'is_done' => false,
         ]);
