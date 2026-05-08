@@ -68,3 +68,65 @@ li {
 .text-orange { color: #ff9900; }
 .text-yellow { color: #ffcc00; }
 .text-red { color: #cc0000; }
+
+/* --- 入力フォームの基本デザイン（メール・パスワード含む） --- */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+textarea {
+    background-color: #000000 !important;
+    color: #ff9900 !important; /* オレンジ文字 */
+    border: 2px solid #ff9900 !important;
+    padding: 10px;
+    font-family: inherit;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* --- 【重要】入力中（フォーカス時）に白くなるのを防ぐ --- */
+input:focus, 
+textarea:focus {
+    border-color: #ffffff !important; /* フォーカス時は枠だけ白くする（カッコいい！） */
+    background-color: #000000 !important;
+    color: #ff9900 !important;
+}
+
+/* --- 【重要】ブラウザの自動入力（黄色や白になるやつ）を黒で上書きする --- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ff9900 !important; /* 自動入力の文字色 */
+    -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important; /* 背景を黒で塗りつぶす */
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* UPDATE SYSTEM ボタン */
+.btn-add {
+    background-color: #ff9900;
+    color: #000000;
+    border: none;
+    padding: 0 24px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    height: 44px;
+    text-transform: uppercase;
+    transition: all 0.2s ease; /* アニメーションを滑らかに */
+}
+
+/* CANCEL ボタン（リンク） */
+.btn-cancel-link {
+    background-color: #99ccff;
+    color: #000000;
+    text-decoration: none;
+    padding: 0 24px;
+    font-weight: bold;
+    display: inline-flex; /* 💡 block ではなく inline-flex にすると横幅が広がらない */
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
