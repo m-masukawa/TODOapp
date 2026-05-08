@@ -12,7 +12,17 @@
 
     <ul>
         @foreach ($todos as $todo)
-            <li>{{ $todo->title }}</li>
+            <li>
+    {{ $todo->title }}
+    
+    {{-- 削除ボタンのフォーム --}}
+    <form action="{{ route('todos.destroy', $todo) }}" method="POST" style="display:inline;">
+        @csrf
+        @method('DELETE') {{-- ← これが「削除」であることをLaravelに伝える魔法の言葉 --}}
+        <button type="submit" onclick="return confirm('本当に削除しますか？')">削除</button>
+    </form>
+  </li>
+
         @endforeach
     </ul>
 
