@@ -11,82 +11,75 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    /**
-     * 新規登録画面を表示
-     */
+    // 新規登録用の入力画面を表示
     public function showRegister(): View
     {
         return view('auth.register');
     }
 
-    /**
-     * 新規登録処理
-     */
+    // ユーザー情報のバリデーションおよびデータベース登録
     public function register(Request $request): RedirectResponse
     {
-        // バリデーション
+        // 名前、メール、パスワードの形式と一意性をチェック
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 
-        // ユーザー作成
+        // パスワードをハッシュ化して新しいユーザーレコードを作成
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // パスワードを暗号化
+            'password' => Hash::make($request->password),
         ]);
 
-        //  ログイン
+        // 登録したユーザー情報でログイン状態を確立
         Auth::login($user);
 
-        // Todo一覧へ移動
+        // 作成完了後にメインの一覧画面へ遷移
         return redirect()->route('todos.index');
     }
 
-    /**
-     * ログイン画面を表示
-     */
+    // ログイン用の入力画面を表示
     public function showLogin(): View
     {
         return view('auth.login');
     }
 
-    /**
-     * ログイン処理
-     */
+    // 認証情報の照合およびログインセッションの開始
     public function login(Request $request): RedirectResponse
     {
-        // 入力チェック
+        // 送信されたメールアドレスとパスワードの存在を確認
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        // ログイン試行
+        // データベースの照合に成功した場合はセッションIDを更新
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate(); // セッションの再生成（セキュリティ対策）
+            $request->session()->regenerate();
 
             return redirect()->route('todos.index');
         }
 
-        // 失敗した場合はエラーを返して戻る
+        // 照合失敗時にエラーメッセージを付与して入力画面へ返却
         return back()->withErrors([
             'email' => 'メールアドレスまたはパスワードが正しくありません。',
         ])->onlyInput('email');
     }
 
-    /**
-     * ログアウト処理
-     */
+    // 現在のログインセッションの破棄
     public function logout(Request $request): RedirectResponse
     {
+        // ユーザーの認証状態を解除
         Auth::logout();
 
-        $request->session()->invalidate(); // セッションを無効化
-        $request->session()->regenerateToken(); // CSRFトークンを再生成
+        // 既存セッションの破棄とCSRFトークンのリセット
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
+        // 処理終了後にログイン画面へ遷移
         return redirect()->route('login');
     }
 }

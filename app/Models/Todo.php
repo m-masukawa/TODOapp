@@ -9,12 +9,12 @@ class Todo extends Model
 {
     use HasFactory;
 
-    // ここを追記：保存していいカラムをホワイトリスト形式で指定
+    // 一括でのデータ保存を許可するカラムの定義
     protected $fillable = [
         'user_id',
         'title',
         'description',
-        'completed', // マイグレーションで決めた名
+        'completed',
         'body',
     ];
 }
