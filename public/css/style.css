@@ -5,14 +5,15 @@ body {
     font-family: sans-serif;
     margin: 0;
     padding: 20px;
-    text-transform: uppercase; /* スタートレックっぽく大文字に */
+    /* 視覚的コンセプトに基づいた全文字の大文字化 */
+    text-transform: uppercase;
 }
 
-/* --- ナビゲーション（LCARSのバー） --- */
+/* --- ナビゲーション（LCARSデザイン） --- */
 nav {
     display: flex;
     gap: 15px;
-    background-color: #99ccff; /* LCARSブルー */
+    background-color: #99ccff;
     padding: 15px 30px;
     border-radius: 50px;
     margin-bottom: 30px;
@@ -33,74 +34,43 @@ nav button {
     font-weight: bold;
 }
 
-/* --- 入力フォーム（視認性確保！） --- */
-input[type="text"], input[type="email"], input[type="password"], textarea {
-    background-color: #000000;
-    border: 2px solid #ff9900; /* オレンジ枠 */
-    color: #ff9900;
+/* --- 入力フォームの基本デザイン --- */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+textarea {
+    background-color: #000000 !important;
+    color: #ff9900 !important;
+    border: 2px solid #ff9900 !important;
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
-}
-
-/* --- ボタン --- */
-button[type="submit"].btn-add {
-    background-color: #ff9900;
-    color: #000000;
-    border: none;
-    padding: 10px 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* --- リスト --- */
-ul { list-style: none; padding: 0; }
-li {
-    background-color: #1a1a1a;
-    border-left: 10px solid #99ccff;
-    margin-bottom: 10px;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.text-orange { color: #ff9900; }
-.text-yellow { color: #ffcc00; }
-.text-red { color: #cc0000; }
-
-/* --- 入力フォームの基本デザイン（メール・パスワード含む） --- */
-input[type="email"],
-input[type="password"],
-input[type="text"],
-textarea {
-    background-color: #000000 !important;
-    color: #ff9900 !important; /* オレンジ文字 */
-    border: 2px solid #ff9900 !important;
-    padding: 10px;
     font-family: inherit;
     border-radius: 4px;
     outline: none;
 }
 
-/* --- 【重要】入力中（フォーカス時）に白くなるのを防ぐ --- */
+/* --- 入力中（フォーカス時）のスタイル制御 --- */
 input:focus, 
 textarea:focus {
-    border-color: #ffffff !important; /* フォーカス時は枠だけ白くする（カッコいい！） */
+    /* 視認性向上のためフォーカス時は枠線を白に変更 */
+    border-color: #ffffff !important;
     background-color: #000000 !important;
     color: #ff9900 !important;
 }
 
-/* --- 【重要】ブラウザの自動入力（黄色や白になるやつ）を黒で上書きする --- */
+/* --- ブラウザの自動入力による背景色変化の防止 --- */
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
-    -webkit-text-fill-color: #ff9900 !important; /* 自動入力の文字色 */
-    -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important; /* 背景を黒で塗りつぶす */
+    /* 自動入力時もデザインを維持するための文字色と影の再定義 */
+    -webkit-text-fill-color: #ff9900 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #000000 inset !important;
     transition: background-color 5000s ease-in-out 0s;
 }
 
-/* UPDATE SYSTEM ボタン */
+/* --- ボタン共通設定および個別設定 --- */
 .btn-add {
     background-color: #ff9900;
     color: #000000;
@@ -111,17 +81,18 @@ input:-webkit-autofill:focus {
     font-family: inherit;
     height: 44px;
     text-transform: uppercase;
-    transition: all 0.2s ease; /* アニメーションを滑らかに */
+    /* 操作時の応答性を高めるアニメーション設定 */
+    transition: all 0.2s ease;
 }
 
-/* CANCEL ボタン（リンク） */
 .btn-cancel-link {
     background-color: #99ccff;
     color: #000000;
     text-decoration: none;
     padding: 0 24px;
     font-weight: bold;
-    display: inline-flex; /* 💡 block ではなく inline-flex にすると横幅が広がらない */
+    /* ボタンと高さを揃えるためのインラインフレックス配置 */
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     height: 44px;
@@ -130,3 +101,19 @@ input:-webkit-autofill:focus {
     box-sizing: border-box;
     transition: all 0.2s ease;
 }
+
+/* --- リスト要素のレイアウト --- */
+ul { list-style: none; padding: 0; }
+li {
+    background-color: #1a1a1a;
+    border-left: 10px solid #99ccff;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 汎用テキストカラー定義 */
+.text-orange { color: #ff9900; }
+.text-yellow { color: #ffcc00; }
+.text-red { color: #cc0000; }

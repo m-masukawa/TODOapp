@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
-/* 💡 v4では、ここで直接変数を定義するのが一番確実です */
+/* 共通のデザインシステムとして使用する独自色の定義 */
 @theme {
+  /* 背景用：漆黒 */
   --color-lcars-bg: #000000;
+  /* 強調用：LCARS標準のオレンジ */
   --color-lcars-orange: #ff9900;
+  /* ナビゲーション用：LCARS標準のブルー */
   --color-lcars-blue: #99ccff;
 }
 
-/* 💡 クラスが効かない時のための「絶対命令」をここに書きます */
+/* ブラウザのデフォルトスタイルを上書きする基本定義 */
 @layer base {
   html, body {
+    /* アプリ全体の世界観を維持するため背景色と文字色を強制指定 */
     background-color: #000000 !important;
     color: #ffffff !important;
   }

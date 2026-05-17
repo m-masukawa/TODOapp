@@ -18,21 +18,24 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * データの型変換ルールを定義
      */
     protected function casts(): array
     {
         return [
+            // メール確認日時を日時型として扱う
             'email_verified_at' => 'datetime',
+            // パスワードを自動的にハッシュ化して保存
             'password' => 'hashed',
         ];
     }
 
+    /**
+     * Todoモデルとの1対多のリレーションを定義
+     */
     public function todos()
     {
-        // 1対多
+        // 1人のユーザーに対して複数のTodoが紐付く関係
         return $this->hasMany(Todo::class);
     }
 }

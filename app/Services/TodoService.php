@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class TodoService
 {
+    // 入力データを受け取り認証ユーザーに関連付けて保存
     public function create(array $data): Todo
     {
         return Todo::create([
@@ -17,7 +18,8 @@ class TodoService
         ]);
     }
 
-    public function createTodo(array $data): Todo // 型を追加
+    // 指定された配列データをそのままデータベースに登録
+    public function createTodo(array $data): Todo
     {
         return Todo::create($data);
     }
